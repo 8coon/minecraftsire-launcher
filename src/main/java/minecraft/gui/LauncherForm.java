@@ -27,20 +27,6 @@ public class LauncherForm extends Form {
                 System.out.println("CLICKED");
             }
         });
-
-        RestoreAccessLink.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                form.browseLink("https://minecraftshire.ru/app/restore_access");
-            }
-        });
-
-        WebsiteLink.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                form.browseLink("https://minecraftshire.ru/");
-            }
-        });
     }
 
     @Override
@@ -55,11 +41,8 @@ public class LauncherForm extends Form {
 
     @Override
     public void onCreate() {
-        WebsiteLink.setText("<HTML><U>Перейти на сайт</U></HTML>");
-        WebsiteLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-        RestoreAccessLink.setText("<HTML><U>Восстановить доступ</U></HTML>");
-        RestoreAccessLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        this.makeLink(WebsiteLink, "https://minecraftshire.ru/");
+        this.makeLink(RestoreAccessLink, "https://minecraftshire.ru/app/restore_access/");
     }
 
     public JPanel getContentPane() {

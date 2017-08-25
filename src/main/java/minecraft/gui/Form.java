@@ -3,6 +3,8 @@ package minecraft.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -70,6 +72,21 @@ public abstract class Form implements IForm {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public void makeLink(JLabel label, final String url) {
+        final Form form = this;
+
+        label.setText("<HTML><U>" + label.getText() + "</U></HTML>");
+        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                form.browseLink(url);
+            }
+        });
     }
 
 }
